@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DailyLogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/dailylogs', [DailyLogController::class, 'index']);
+Route::prefix('/dailylogs')->group( function() {
+    Route::post('/add', [DailyLogController::class, 'add']);
+    // Route::put('/{id}', [DailyLogController::class, 'edit']);
+    // Route::delete('/{id}', [DailyLogController::class, 'delete']);
 });
