@@ -98,6 +98,13 @@ class DailyLogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $existingLog = DailyLog::find($id);
+        
+        if ($existingLog) {
+            $existingLog->delete();
+            return "Log successfully deleted.";
+        } else {
+            return "Log not found.";
+        }
     }
 }
