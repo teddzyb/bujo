@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/dailylogs', [DailyLogController::class, 'index']);
-Route::prefix('/dailylogs')->group( function() {
-    Route::post('/add', [DailyLogController::class, 'add']);
-    // Route::put('/{id}', [DailyLogController::class, 'edit']);
-    // Route::delete('/{id}', [DailyLogController::class, 'delete']);
+Route::prefix('/dailylog')->group( function() {
+    Route::post('/store', [DailyLogController::class, 'store']);
+    // Route::put('/{id}', [DailyLogController::class, 'update']);
+    // Route::delete('/{id}', [DailyLogController::class, 'destroy']);
 });

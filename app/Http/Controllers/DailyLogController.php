@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\DailyLog;
 
 class DailyLogController extends Controller
 {
@@ -13,7 +15,7 @@ class DailyLogController extends Controller
      */
     public function index()
     {
-        //
+        return DailyLog::orderBy('date', 'DESC')->get();
     }
 
     /**
@@ -34,7 +36,13 @@ class DailyLogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newLog = new DailyLog;
+        $newLog->title = $request->dailylog["title"];
+        $newLog->mood = $request->dailylog["mood"];
+        $newLog->description = $request->dailylog["description"];
+
+        $newLog->save();
+        return $newLog;
     }
 
     /**

@@ -15,7 +15,6 @@ class CreateDailyLogsTable extends Migration
     {
         Schema::create('daily_logs', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('date');
             $table->string('title');
             $table->string('mood');
             $table->string('description');
