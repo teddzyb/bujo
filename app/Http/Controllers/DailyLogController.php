@@ -15,7 +15,7 @@ class DailyLogController extends Controller
      */
     public function index()
     {
-        return DailyLog::orderBy('date', 'DESC')->get();
+        return DailyLog::orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -76,7 +76,18 @@ class DailyLogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingLog = DailyLog::find($id);
+
+        if ($existingLog) {
+            $existingLog->title = $request->dailylog["title"];
+            $existingLog->mood = $request->dailylog["mood"];
+            $existingLog->description = $request->dailylog["description"];
+
+            $existingLog->save();
+            return $existingLog;
+        } else {
+            return "Log not found.";
+        }
     }
 
     /**
