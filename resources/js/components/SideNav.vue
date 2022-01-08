@@ -15,19 +15,19 @@
                     <ul class="navbar-nav px-4">
                         <li class="nav-item">
                             <a class="nav-link" href='#'>
-                                <i class="ni ni-chart-pie-35 text-blue"></i>
+                                <i class="ni ni-chart-pie-35 text-green"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href='#'>
-                                <i class="ni ni-book-bookmark text-green"></i>
+                                <i class="ni ni-book-bookmark text-orange"></i>
                                 <span class="nav-link-text">Daily Log</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href='#'>
-                                <i class="ni ni-satisfied text-orange"></i>
+                                <i class="ni ni-satisfied text-yellow"></i>
                                 <span class="nav-link-text">Activity Tracker</span>
                             </a>
                         </li>
@@ -49,13 +49,13 @@
                     <ul class="navbar-nav px-4">
                         <li class="nav-item">
                             <a class="nav-link" href='#'>
-                                <i class="ni ni-single-02 text-purple"></i>
+                                <i class="ni ni-single-02 text-blue"></i>
                                 <span class="nav-link-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href='#'>
-                                <i class="ni ni-settings text-red"></i>
+                                <i class="ni ni-settings text-teal"></i>
                                 <span class="nav-link-text">Settings</span>
                             </a>
                         </li>
@@ -70,6 +70,6 @@
 
 <script>
 export default {
-    
+    name: "SideNav"
 }
 </script>

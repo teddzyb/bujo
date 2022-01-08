@@ -239,7 +239,7 @@
         <!-- Header -->
 
         <!-- Page content -->
-        <router-view />
+        <DailyLog />
 
         <!-- Footer -->
         <footer class="footer pt-0 px-4">
@@ -271,7 +271,12 @@
 </template>
 
 <script>
+import DailyLog from "../vue/DailyLog.vue";
+
 export default {
-    
+    name: "Content",
+    components: {
+        DailyLog,
+    }
 }
 </script>
