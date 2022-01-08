@@ -2,18 +2,27 @@
 Bujo is a robust bullet journaling app that allows users to track their needs, organize their thoughts, and receive recommendations based on their journal entries.
 
 ## Features
-- Dashboard to display all the important information and analytics based on the user’s entries, including recommendations for relevant articles and resources
-- Will allow users to make custom entries on their bullet journal space where they can organize their thoughts
-- Will allow users to use preset components for their entries which may include, but is not limited to:
-  - Water intake tracker
-  - Study habit tracker
-  - Activity tracker
-  - Sleep log
-  - Calendar/Planner
-  - Sticky Note
-  - Checklist
-  - Reminder
-- Will allow users to customize the app to their liking through different themes
+- **Dashboard** to display all the important information and analytics based on the user’s entries, including recommendations for relevant articles and resources
+- **Daily Log** for creating daily entries
+- **Activity tracker** for keeping track of daily activities and achievements
+- **Hydration tracker** for keeping track of daily water intake
+- **Sleep log** for keeping track of sleep length every night
+- **Profile** for editing and customizing user information on the website
+- **Themes** for customizing the app to the liking of the user
+
+## Development
+Install node modules
+```sh-session
+npm i
+```
+Run development server
+```sh-session
+php artisan serve
+```
+Run hot reload
+```sh-session
+npm run hot
+```
 
 ## Contributors
 - Edwin Bartlett
