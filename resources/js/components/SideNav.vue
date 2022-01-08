@@ -20,10 +20,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'DailyLog' }">
                             <a class="nav-link" href='#'>
                                 <i class="ni ni-book-bookmark text-orange"></i>
                                 <span class="nav-link-text">Daily Log</span>
                             </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href='#'>

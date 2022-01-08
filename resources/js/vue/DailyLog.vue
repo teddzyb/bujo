@@ -56,19 +56,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="description">Short Description</label>
-                                                <input class="form-control" placeholder="Short Description" type="text" name="description" required>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="pl-lg-4">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="details">Details</label>
-                                        <textarea rows="4" class="form-control" placeholder="Enter the details for your entry..." name="details"></textarea>
+                                        <label class="form-control-label" for="description">Description</label>
+                                        <textarea rows="4" class="form-control" placeholder="Enter the description for your entry..." name="description"></textarea>
                                     </div>
                                     <div class="text-center">
                                         <input class="btn bg-green text-white mt-2 mb-4" type="submit" value="Submit">
@@ -155,6 +147,6 @@
 
 <script>
 export default {
-    
+    name: "DailyLog",
 }
 </script>
