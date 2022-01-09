@@ -33,19 +33,19 @@
                         </div>
                         <!-- Light table -->
                         <div class="table-responsive">
-                            <form class="mr-3" action="../AddEntry?id=@creds[0].UserID" method="post">
+                            <div class="mr-3">
                                 <div class="pl-lg-4">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="title">Entry Title</label>
-                                                <input type="text" class="form-control" placeholder="Entry Title" name="title" required>
+                                                <input v-model="entry.title" type="text" class="form-control" placeholder="Entry Title" name="title" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="mood">Mood</label>
-                                                <select class="form-control" name="mood">
+                                                <select v-model="entry.mood" class="form-control" name="mood">
                                                     <option selected>Select a mood</option>
                                                     <option value="great">Great</option>
                                                     <option value="good">Good</option>
@@ -60,61 +60,17 @@
                                 <div class="pl-lg-4">
                                     <div class="form-group">
                                         <label class="form-control-label" for="description">Description</label>
-                                        <textarea rows="4" class="form-control" placeholder="Enter the description for your entry..." name="description"></textarea>
+                                        <textarea v-model="entry.description" rows="4" class="form-control" placeholder="Enter the description for your entry..." name="description" required></textarea>
+                                    </div>
+                                    <div v-if="this.error.length > 0" class="text-center text-danger">
+                                        Error: {{ this.error.join(", ") }}
                                     </div>
                                     <div class="text-center">
-                                        <input class="btn bg-green text-white mt-2 mb-4" type="submit" value="Submit">
+                                        <input @click="submitEntry" class="btn bg-green text-white mt-2 mb-4" type="submit" value="Submit">
                                     </div>
                                 </div>
-                            </form>
-                            <table class="table align-items-center table-flush">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col" class="sort" data-sort="name">Entry</th>
-                                        <th scope="col" class="sort" data-sort="budget">Date</th>
-                                        <th scope="col" class="sort" data-sort="status">Mood</th>
-                                        <th scope="col" class="sort" data-sort="completion">Description</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list">
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-                                                <div class="media-body">
-                                                    <span class="name mb-0 text-sm">Title</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>
-                                            Date
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-green"></i>
-                                                <span class="status">Mood</span>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                Description
-                                            </div>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="dropdown">
-                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    <a class="dropdown-item" href="#">View</a>
-                                                    <a class="dropdown-item" href="#">Edit</a>
-                                                    <a class="dropdown-item" href="#">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            </div>
+                            <DailyLogEntries :entries="logEntries" />
                         </div>
                         <!-- Card footer -->
                         <div class="card-footer py-4">
@@ -146,7 +102,62 @@
 </template>
 
 <script>
+import DailyLogEntries from '../components/DailyLogEntries.vue';
+
 export default {
     name: "DailyLog",
+    components: {
+        DailyLogEntries,
+    },
+    data: function() {
+        return {
+            entry: {
+                title: "",
+                mood: "Select a mood",
+                description: "",
+            },
+            error: [],
+            logEntries: [],
+        }
+    },
+    methods: {
+        submitEntry() {
+            if (this.entry.title == "" ||
+                this.entry.mood == "Select a mood" ||
+                this.entry.description == "") {
+                this.error.push("please fill in all the fields");
+                return;
+            } else {
+                this.error = [];
+                axios.post('api/dailylog/store', {
+                    dailylog: this.entry,
+                })
+                .then(response => {
+                    if (response.status == 201) {
+                        this.entry.title = "";
+                        this.entry.mood = "Select a mood";
+                        this.entry.description = "";
+                        this.getEntries();
+                    }
+                })
+                .catch(error => {
+                    this.error.push(error);
+                });
+            }
+        },
+        getEntries() {
+            axios.get('api/dailylogs')
+            .then(response => {
+                this.logEntries = response.data;
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+    },
+    created() {
+        this.getEntries();
+    }
 }
 </script>
