@@ -14,10 +14,12 @@
                     <!-- Nav items -->
                     <ul class="navbar-nav px-4">
                         <li class="nav-item">
+                            <router-link :to="{ name: 'Dashboard' }">
                             <a class="nav-link" href='#'>
                                 <i class="ni ni-chart-pie-35 text-green"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{ name: 'DailyLog' }">
@@ -28,22 +30,28 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'ActivityTracker' }">
                             <a class="nav-link" href='#'>
                                 <i class="ni ni-satisfied text-yellow"></i>
                                 <span class="nav-link-text">Activity Tracker</span>
                             </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'HydrationTracker' }">
                             <a class="nav-link" href='#'>
                                 <i class="ni ni-chart-bar-32 text-teal"></i>
                                 <span class="nav-link-text">Hydration Tracker</span>
                             </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'SleepLog' }">
                             <a class="nav-link" href='#'>
                                 <i class="ni ni-favourite-28 text-red"></i>
                                 <span class="nav-link-text">Sleep Log</span>
                             </a>
+                            </router-link>
                         </li>
                     </ul>
                     <!-- Divider -->
