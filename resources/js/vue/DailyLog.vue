@@ -29,7 +29,7 @@
                     <div class="card">
                         <!-- Card header -->
                         <div class="card-header border-0">
-                            <h3 class="mb-0">Today</h3>
+                            <h3 class="mb-0">{{ this.currentDateTime() }}</h3>
                         </div>
                         <!-- Light table -->
                         <div class="table-responsive">
@@ -66,11 +66,13 @@
                                         Error: {{ this.error.join(", ") }}
                                     </div>
                                     <div class="text-center">
-                                        <input @click="submitEntry" class="btn bg-green text-white mt-2 mb-4" type="submit" value="Submit">
+                                        <input @click="submitEntry" v-if="this.editMode == 0" class="bg-green btn text-white mt-2 mb-4" type="submit" value="Submit">
+                                        <input @click="updateEntry" v-else class="bg-green btn text-white mt-2 mb-4" type="submit" value="Update">
+                                        <input @click="cancelEdit" v-if="this.editMode != 0" class="btn bg-red text-white mt-2 mb-4" type="submit" value="Cancel">
                                     </div>
                                 </div>
                             </div>
-                            <DailyLogEntries :entries="logEntries" />
+                            <DailyLogEntries v-on:updateEntry="editEntry" v-on:updateLogs="getEntries()" :entries="logEntries" />
                         </div>
                         <!-- Card footer -->
                         <div class="card-footer py-4">
@@ -118,9 +120,16 @@ export default {
             },
             error: [],
             logEntries: [],
+            editMode: 0,
         }
     },
     methods: {
+        currentDateTime() {
+            const months = ["January", "February", "March", "April", "May", "June", "July",
+                            "August", "September", "October", "November", "December"];
+            const current = new Date();
+            return months[current.getMonth()]+' '+current.getDate()+', '+current.getFullYear();
+        },
         submitEntry() {
             if (this.entry.title == "" ||
                 this.entry.mood == "Select a mood" ||
@@ -154,6 +163,37 @@ export default {
             .catch(error => {
                 console.log(error);
             });
+        },
+        editEntry(id) {
+            this.editMode = id;
+            this.logEntries.forEach(entry => {
+                if (entry.id == id) {
+                    this.entry.title = entry.title;
+                    this.entry.mood = entry.mood;
+                    this.entry.description = entry.description;
+                }
+            });
+        },
+        cancelEdit() {
+            this.editMode = 0;
+            this.entry.title = "";
+            this.entry.mood = "Select a mood";
+            this.entry.description = "";
+        },
+        updateEntry() {
+            axios.put('api/dailylog/' + this.editMode, {
+                dailylog: this.entry,
+            })
+            .then(response => {
+                if (response.status == 200) {
+                    this.getEntries();
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+            this.cancelEdit();
+            this.editMode = 0;
         }
     },
     created() {
