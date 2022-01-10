@@ -165,6 +165,7 @@ export default {
             });
         },
         editEntry(id) {
+            this.error = [];
             this.editMode = id;
             this.logEntries.forEach(entry => {
                 if (entry.id == id) {
