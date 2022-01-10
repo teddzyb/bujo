@@ -14,8 +14,9 @@
             <span class="badge badge-dot mr-4">
                 <i v-if="entry.mood == 'great'" class="bg-green"></i>
                 <i v-else-if="entry.mood == 'good'" class="bg-info"></i>
-                <i v-else-if="entry.mood == 'okay'" class="bg-orange"></i>
-                <i v-else-if="entry.mood == 'bad'" class="bg-red"></i>
+                <i v-else-if="entry.mood == 'okay'" class="bg-yellow"></i>
+                <i v-else-if="entry.mood == 'bad'" class="bg-orange"></i>
+                <i v-else-if="entry.mood == 'terrible'" class="bg-red"></i>
                 <span class="status">{{ entry.mood }}</span>
             </span>
         </td>
