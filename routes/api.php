@@ -3,6 +3,7 @@
 use App\Http\Controllers\DailyLogController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\HydrationLogController;
+use App\Http\Controllers\SleepLogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,4 +44,12 @@ Route::prefix('/hydrationlog')->group( function() {
     Route::post('/store', [HydrationLogController::class, 'store']);
     Route::put('/{id}', [HydrationLogController::class, 'update']);
     Route::delete('/{id}', [HydrationLogController::class, 'destroy']);
+});
+
+// Sleep Log
+Route::get('/sleeplogs', [SleepLogController::class, 'index']);
+Route::prefix('/sleeplog')->group( function() {
+    Route::post('/store', [SleepLogController::class, 'store']);
+    Route::put('/{id}', [SleepLogController::class, 'update']);
+    Route::delete('/{id}', [SleepLogController::class, 'destroy']);
 });
