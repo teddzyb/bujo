@@ -58,10 +58,12 @@
                     <hr class="my-3">
                     <ul class="navbar-nav px-4">
                         <li class="nav-item">
+                            <router-link :to="{ name: 'Profile' }">
                             <a class="nav-link" href='#'>
                                 <i class="ni ni-single-02 text-blue"></i>
                                 <span class="nav-link-text">Profile</span>
                             </a>
+                            </router-link>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href='#'>

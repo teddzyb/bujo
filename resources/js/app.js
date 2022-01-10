@@ -8,6 +8,7 @@ import DailyLog from './vue/DailyLog';
 import ActivityTracker from './vue/ActivityTracker';
 import HydrationTracker from './vue/HydrationTracker';
 import SleepLog from './vue/SleepLog';
+import Profile from './vue/Profile';
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,11 @@ const routes = [
       path: "/sleeplog",
       name: "SleepLog",
       component: SleepLog,
+    },
+    {
+      path: "/profile",
+      name: "Profile",
+      component: Profile,
     },
   ];
   
