@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DailyLogController;
+use App\Http\Controllers\ActivityLogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,11 @@ Route::prefix('/dailylog')->group( function() {
     Route::post('/store', [DailyLogController::class, 'store']);
     Route::put('/{id}', [DailyLogController::class, 'update']);
     Route::delete('/{id}', [DailyLogController::class, 'destroy']);
+});
+
+Route::get('/activitylogs', [ActivityLogController::class, 'index']);
+Route::prefix('/activitylog')->group( function() {
+    Route::post('/store', [ActivityLogController::class, 'store']);
+    Route::put('/{id}', [ActivityLogController::class, 'update']);
+    Route::delete('/{id}', [ActivityLogController::class, 'destroy']);
 });
