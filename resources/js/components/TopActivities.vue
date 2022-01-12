@@ -1,6 +1,6 @@
 <template>
     <tbody>
-        <tr v-if="activities.length == 0">
+        <tr v-if="Object.keys(activities).length == 0">
             <td scope="row" colspan="3" rowspan="5" class="text-center">
                 Top activities will display here
             </td>
