@@ -28,3 +28,6 @@ npm run hot
 - Edwin Bartlett
 - Jan Michael Garot
 - Niña Therese Ybas
+
+## Project Status
+Completed: January 12, 2022
