@@ -15,6 +15,10 @@ Install node modules
 ```sh-session
 npm i
 ```
+Migrate databases
+```sh-session
+php artisan migrate
+```
 Run development server
 ```sh-session
 php artisan serve
@@ -24,10 +28,39 @@ Run hot reload
 npm run hot
 ```
 
+## Screenshots
+<p align="center">
+  <img src="https://github.com/teddzyb/bujo/blob/master/screenshots/dashboard.png?raw=true"/>
+  Dashboard
+</p>
+<p align="center">
+  <img src="https://github.com/teddzyb/bujo/blob/master/screenshots/dailylog.png?raw=true"/>
+  Daily Log
+</p>
+<p align="center">
+  <img src="https://github.com/teddzyb/bujo/blob/master/screenshots/activitytracker.png?raw=true"/>
+  Activity Tracker
+</p>
+<p align="center">
+  <img src="https://github.com/teddzyb/bujo/blob/master/screenshots/hydrationtracker.png?raw=true"/>
+  Hydration Tracker
+</p>
+<p align="center">
+  <img src="https://github.com/teddzyb/bujo/blob/master/screenshots/sleeplog.png?raw=true"/>
+  Sleep Log
+</p>
+
 ## Contributors
 - Edwin Bartlett
 - Jan Michael Garot
 - Niña Therese Ybas
+
+## Copyright Notice
+This website was created through a template made by Creative Tim. All UI and components are based on the original design.
+* Argon Dashboard - v1.2.0
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
 
 ## Project Status
 Completed: January 12, 2022
